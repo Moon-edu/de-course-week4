@@ -1,6 +1,7 @@
 from typing import Tuple
 # 주의사항 1. 각 파일 간의 함수, 혹은 로직을 공유하지 마세요
 # 주의사항 2. test_로 시작하는 함수는 절대 변경하지 마세요
+# 주의사항 3. 함수 이름은 변경하지 마세요
 # 위를 위반하면 채점이 제대로 되지 않아 0점 처리됩니다.
 
 
@@ -20,13 +21,14 @@ def find_top3_richest_city() -> list:
     pass
 
 
+
+
+# 여기서부터는 절대 건들지 마세요
 def test_find_richest_and_asset():
-    find_richest_and_asset()
-    pass
+    result = find_richest_and_asset()
+    assert result == ("Donald", 1023014)
 
 def test_find_top3_richest_city():
-    find_top3_richest_city()
-    pass
-
-if __name__ == "__main__":
-    pass
+    result = find_top3_richest_city()
+    assert len(result) == 3
+    assert ["Dublin", "Seoul", "New York"] in result
