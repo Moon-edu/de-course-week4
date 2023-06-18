@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "de-course-week4"
+version = "0.0.1"
+description = "데이터 엔지니어링 기초 코스 4주차 예제 및 과제"
+authors = ["현문덕 <edu.moonduck@gmail.com>"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+xmltodict = "^0.13.0"
+openpyxl = "^3.0.10"
+
+[tool.poetry.dev-dependencies]
+pytest-cov = "^2.10"
+pytest = "^6.0"
+
+[tool.poetry.scripts]
+my-script = "my_package.my_module:main"
