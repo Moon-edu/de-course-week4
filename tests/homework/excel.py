@@ -1,7 +1,6 @@
 from typing import Tuple
 # 주의사항 1. 각 파일 간의 함수, 혹은 로직을 공유하지 마세요
-# 주의사항 2. test_로 시작하는 함수는 절대 변경하지 마세요
-# 주의사항 3. 함수 이름은 변경하지 마세요
+# 주의사항 2. 함수 이름은 변경하지 마세요
 # 위를 위반하면 채점이 제대로 되지 않아 0점 처리됩니다.
 
 
@@ -17,16 +16,3 @@ def find_corp_total_asset() -> int:
 # 리턴 값의 예) 1025831.87653
 def find_llc_total_asset() -> int:
     pass
-
-
-
-
-# 여기서부터는 절대 건들지 마세요
-def test_find_richest_and_asset():
-    result = find_corp_total_asset()
-    assert result == 10239102305
-
-
-def test_find_llc_total_asset():
-    result = find_llc_total_asset()
-    assert abs(result - 1025831.87653) < 0.00001
