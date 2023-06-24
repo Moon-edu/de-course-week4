@@ -8,33 +8,35 @@ from tests.homework.xml import *
 """
 def test_q1_test_find_richest_and_asset():
     result = find_richest_and_asset()
-    assert result == ("Donald", 1023014)
+    assert result == ("Xantha", 9977373)
 
 def test_q1_test_find_top3_richest_city():
     result = find_top3_richest_city()
     assert len(result) == 3
-    assert ["Dublin", "Seoul", "New York"] in result
+    assert sorted(['Dublin', 'Barranca', 'Melilla']) in sorted(result)
 
 
-def test_q2_test_find_richest_and_asset():
+def test_q2_test_find_corp_total_asset():
     result = find_corp_total_asset()
-    assert result == 10239102305
+    assert result == 174960971
 
 def test_q2_test_find_llc_total_asset():
     result = find_llc_total_asset()
-    assert abs(result - 1025831.87653) < 0.00001
+    assert abs(result - (171172503 / 35)) < 0.00001
 
 
 def test_q3_test_summarize():
     result = summarize()
-    assert result == (100391284324, 198312.8732, 500)
+    assert result[0] == 2510970992
+    assert abs(result[1] - 5021941.984) < 0.001
+    assert result[2] == 500
 
 
 def test_q4_test_find_poor_and_asset():
     result = find_poor_and_asset()
-    assert result == ("Donald", -102314)
+    assert result == ('Noah', 28401)
 
-def test_q4_test_find_top5_poorest_city():
+def test_q4_test_find_top3_poorest_city():
     result = find_top3_poorest_city()
     assert len(result) == 3
-    assert ["Dublin", "Seoul", "New York"] in result
+    assert sorted(["Pinneberg", "Gorzow Wielkopolski", "Guri"]) == sorted(result)
