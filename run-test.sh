@@ -26,7 +26,7 @@ while IFS= read -r line; do
     echo "Test $TEST_ID failed"
   else
     echo "Test $TEST_ID passed, Adding ${SCORE[TEST_ID]}"
-    TOTAL=$((TOTAL+${SCORE[TEST_ID]}))
+    TOTAL=$((TOTAL+${SCORE[$TEST_ID]}))
   fi
 done <<< "$OUTCOME"
 echo "Total score: $TOTAL"
