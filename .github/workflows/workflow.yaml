@@ -32,5 +32,5 @@ jobs:
       - name: List directory for debugging
         run: ls -a ${{ github.workspace }}
       - name: Run tests
-        run: sh run-test.sh
+        run: bash run-test.sh
 
