@@ -31,6 +31,6 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: List directory for debugging
         run: ls -a ${{ github.workspace }}
-      - name: Run tests
+      - name: Your score is...
         run: bash run-test.sh
 
