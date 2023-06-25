@@ -32,6 +32,4 @@ jobs:
       - name: List directory for debugging
         run: ls -a ${{ github.workspace }}
       - name: Run tests
-        run: |
-          source .venv/bin/activate
-          pytest tests/
+        run: poetry run pytest
