@@ -32,4 +32,6 @@ jobs:
       - name: List directory for debugging
         run: ls -a ${{ github.workspace }}
       - name: Run tests
-        run: poetry run pytest
+        run: poetry run pytest --json-report
+      - name: Print report
+        run: cat .report.json
