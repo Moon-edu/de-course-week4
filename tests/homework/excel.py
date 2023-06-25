@@ -5,14 +5,14 @@ from typing import Tuple
 # 위를 위반하면 채점이 제대로 되지 않아 0점 처리됩니다.
 
 
-# 아래에서 pass를 지우고 로직을 작성하세요
+# 아래에서 pass를 지우고 로직을 작성하세요(10점)
 # 아래 함수를 실행하면, assets.xlsx 에서 Corp.로 끝나는 회사를 다니는 사람들의 자산 총 합계를 리턴합니다.
 # 리턴 값의 예) 10239102305
 def find_corp_total_asset() -> int:
     pass
 
 
-# 아래에서 pass를 지우고 로직을 작성하세요
+# 아래에서 pass를 지우고 로직을 작성하세요(10점)
 # 아래 함수를 실행하면, assets.xlsx 에서 LLC로 끝나는 회사를 다니는 사람들의 자산 총 평균을 리턴합니다.
 # 리턴 값의 예) 1025831.87653
 def find_llc_total_asset() -> int:
