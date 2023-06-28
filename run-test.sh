@@ -22,11 +22,11 @@ while IFS= read -r line; do
   IFS=',' read -r outcome nodeid <<< "$line"
 
   TEST_ID=$(echo $nodeid | awk -F"::" '{print $2}')
-  if [ "$outcome" = "failed" ]; then
-    echo "Test $TEST_ID failed"
-  else
-    echo "Test $TEST_ID passed, Adding ${SCORE[TEST_ID]}"
+  if [ "$outcome" = "passed" ]; then
+    echo "Test $TEST_ID passed, Adding ${SCORE[$TEST_ID]}"
     TOTAL=$((TOTAL+${SCORE[$TEST_ID]}))
+  else
+    echo "Test $TEST_ID $outcome"
   fi
 done <<< "$OUTCOME"
 echo "Total score: $TOTAL"
