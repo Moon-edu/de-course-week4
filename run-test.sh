@@ -15,7 +15,7 @@ SCORE["test_q3_test_summarize"]=20
 SCORE["test_q4_test_find_poor_and_asset"]=10
 SCORE["test_q4_test_find_top3_poorest_city"]=20
 
-
+TOTAL=0
 while IFS= read -r line; do
   echo "Processing line: $line"
 

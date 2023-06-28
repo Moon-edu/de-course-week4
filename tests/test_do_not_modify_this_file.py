@@ -10,6 +10,7 @@ def test_q1_test_find_richest_and_asset():
     result = find_richest_and_asset()
     assert result == ("Xantha", 9977373)
 
+
 def test_q1_test_find_top3_richest_city():
     result = find_top3_richest_city()
     assert len(result) == 3
@@ -19,6 +20,7 @@ def test_q1_test_find_top3_richest_city():
 def test_q2_test_find_corp_total_asset():
     result = find_corp_total_asset()
     assert result == 174960971
+
 
 def test_q2_test_find_llc_total_asset():
     result = find_llc_total_asset()
@@ -35,6 +37,7 @@ def test_q3_test_summarize():
 def test_q4_test_find_poor_and_asset():
     result = find_poor_and_asset()
     assert result == ('Noah', 28401)
+
 
 def test_q4_test_find_top3_poorest_city():
     result = find_top3_poorest_city()
