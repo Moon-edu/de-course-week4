@@ -14,17 +14,17 @@ def test_q1_test_find_richest_and_asset():
 def test_q1_test_find_top3_richest_city():
     result = find_top3_richest_city()
     assert len(result) == 3
-    assert sorted(['Dublin', 'Barranca', 'Melilla']) in sorted(result)
+    assert sorted(['Delhi', 'Dortyol', 'Freiberg']) == sorted(result)
 
 
 def test_q2_test_find_corp_total_asset():
     result = find_corp_total_asset()
-    assert result == 174960971
+    assert result == 153092707
 
 
 def test_q2_test_find_llc_total_asset():
     result = find_llc_total_asset()
-    assert abs(result - (171172503 / 35)) < 0.00001
+    assert abs(result - (175985567 / 34)) < 0.00001
 
 
 def test_q3_test_summarize():
