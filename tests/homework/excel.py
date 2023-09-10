@@ -44,7 +44,7 @@ def find_llc_total_asset() -> int:
         if not got_header:
             got_header = True
             continue
-        if r[1].value[-3:] == 'LLC':
+        if r[1].value.split(' ')[-1] != 'LCC.':
             hap += r[4].value
             cnt+=1
 
