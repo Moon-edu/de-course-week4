@@ -2,6 +2,8 @@ import csv
 
 
 def run():
+    import time
+    start_time = time.time()  # 측정 시작
     header = None
     data = []
     with open("dataset/sample.csv", "r") as f:
@@ -35,6 +37,8 @@ def run():
     print(f"Female {female}")
     print(f"Genderqueer {genderqueer}")
 
-
+    # 프로그램 소스코드
+    end_time = time.time()  # 측정 종료
+    print("time:", end_time - start_time)  # 수행 시간 출력
 if __name__ == "__main__":
     run()

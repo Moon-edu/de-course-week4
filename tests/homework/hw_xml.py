@@ -14,20 +14,22 @@ def find_poor_and_asset() -> Tuple:
     with open("hw_data/assets.xml", "r",encoding='utf-8') as f:
         xml_data = xmltodict.parse(f.read())
 
-    data =[]
+    data ={}
     #est_asset_dollar=[]
     for d in range(len(xml_data["data"]["asset"])):
-        data.append([xml_data["data"]["asset"][d]["name"],int(xml_data["data"]["asset"][d]["est_asset_dollar"])])
-        # company = xml_data["data"]["asset"][d]["company"]
-        # city = xml_data["data"]["asset"][d]["city"]
-        # age = xml_data["data"]["asset"][d]["age"]
-        #est_asset_dolla = int(xml_data["data"]["asset"][d]["est_asset_dollar"]))
-    min_name, min_price = [0][0], data[0][-1]
-    for i in range(1, len(data)):
-        if  min_price > data[i][-1]:
-            min_name, min_price = data[i][0], data[i][-1]
+        name = xml_data["data"]["asset"][d]["name"]
+        dollar = int(xml_data["data"]["asset"][d]["est_asset_dollar"])
+        num =0
+        if name in data:
+            num+=1
+            data[name+' '+str(num)] = dollar
+        else :
+            data[name] = dollar
 
-    return min_name, int(min_price)
+    avg_name = sorted(data.items(), key=lambda x: x[1])
+    return avg_name[0]
+
+
 # 아래 함수를 실행하면, assets.xml파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,
 # 하위 3개 도시를 리턴해야 합니다.(하위 3개의 순서는 무관합니다.)(20점)
 # 아래 함수를 실행하면 list 값이 리턴되며, 평균 자산 평가액이 적은 하위 3개 도시를 리턴합니다.
@@ -35,40 +37,27 @@ def find_poor_and_asset() -> Tuple:
 def find_top3_poorest_city() -> list:
     with open("hw_data/assets.xml", "r",encoding='utf-8') as f:
         xml_data = xmltodict.parse(f.read())
-
     data ={}
-    #est_asset_dollar=[]
     for d in range(len(xml_data["data"]["asset"])):
+
         city = xml_data["data"]["asset"][d]["city"]
         est_asset_dolla = int(xml_data["data"]["asset"][d]["est_asset_dollar"])
-        if city in data.keys():
-            data[city].append(est_asset_dolla)
+        if city in data:
+            data[city][0] = data[city][0]+est_asset_dolla
+            data[city][1] = data[city][1] + 1
         else:
-            data[city]= [est_asset_dolla]
+            data[city] = [est_asset_dolla,1]
 
-    data_city = list(data.keys())
-    avg_list = []
-    avg_city_dic = {}
-    for i in range(len(data_city)):
-        avg = round(sum(data[data_city[i]]) / len(data[data_city[i]]))
-        avg_city_dic[data_city[i]] = avg
-        avg_list.append(avg)
-    avg_city_dic=sorted(avg_city_dic.items(), key=lambda x: x[1])
+    for i,k in data.items():
+        data[i] = k[0]/k[1]
 
-    result = []
-    for i in range(3):
-        result.append(avg_city_dic[i][0])
-    return result
+    top3 = sorted(data.items(), key=lambda x: x[1])[:3]
+    return [i[0] for i in top3]
 
-def sum(list_data):
-    result = 0
-    for i in list_data:
-    	result += i
-    return result
 
-def len(list_data):
-    cnt = 0
-    for i in list_data:
-        cnt += 1
-    return cnt
+
+
+
+
+
 
