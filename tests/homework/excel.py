@@ -14,15 +14,12 @@ def find_corp_total_asset() -> int:
     first_sheet = wb.active # wb.worksheets[n]
     got_header = False
     header = None
-    data = []
     hap = 0
     for r in first_sheet:
         if not got_header:
             got_header = True
             continue
-        if r[1].value.split(' ')[-1] != 'Corp.':
-            continue
-        else:
+        if r[1].value[-4:]== 'Corp.':
            hap += r[4].value
 
     return hap
@@ -44,7 +41,7 @@ def find_llc_total_asset() -> int:
         if not got_header:
             got_header = True
             continue
-        if r[1].value.split(' ')[-1] != 'LCC.':
+        if r[1].value[-3:] == 'LLC':
             hap += r[4].value
             cnt+=1
 

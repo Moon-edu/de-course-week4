@@ -13,45 +13,45 @@ import xmltodict
 def find_poor_and_asset() -> Tuple:
     with open("hw_data/assets.xml", "r",encoding='utf-8') as f:
         xml_data = xmltodict.parse(f.read())
+        data = xml_data["data"]["asset"]
+        name = []
+        dollars = []
+        for d in range(len(data)):
+            name.append(data[d]["name"])
+            dollars.append(int(data[d]["est_asset_dollar"]))
 
-    data ={}
-    #est_asset_dollar=[]
-    for d in range(len(xml_data["data"]["asset"])):
-        name = xml_data["data"]["asset"][d]["name"]
-        dollar = int(xml_data["data"]["asset"][d]["est_asset_dollar"])
-        num =0
-        if name in data:
-            num+=1
-            data[name+' '+str(num)] = dollar
-        else :
-            data[name] = dollar
+        min_name = name[0]
+        min_dollar = dollars[0]
+        for dollar in range(len(dollars)):
+            if min_dollar > dollar:
+                min_name = name[dollar]
+                min_dollar = dollars[dollar]
 
-    avg_name = sorted(data.items(), key=lambda x: x[1])
-    return avg_name[0]
+        return min_name, min_dollar
 
 
 # 아래 함수를 실행하면, assets.xml파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,
 # 하위 3개 도시를 리턴해야 합니다.(하위 3개의 순서는 무관합니다.)(20점)
 # 아래 함수를 실행하면 list 값이 리턴되며, 평균 자산 평가액이 적은 하위 3개 도시를 리턴합니다.
 # 리턴 값의 예) ["Dublin", "Seoul", "New York"]
+# 질문 : pandas 라이브러리를 사용해도 무방한지 궁금합니다.
 def find_top3_poorest_city() -> list:
     with open("hw_data/assets.xml", "r",encoding='utf-8') as f:
         xml_data = xmltodict.parse(f.read())
-    data ={}
-    for d in range(len(xml_data["data"]["asset"])):
+        data ={}
+        for d in range(len(xml_data["data"]["asset"])):
+            city = xml_data["data"]["asset"][d]["city"]
+            est_asset_dolla = int(xml_data["data"]["asset"][d]["est_asset_dollar"])
+            if city in data:
+                data[city][0] = data[city][0]+est_asset_dolla
+                data[city][1] = data[city][1] + 1
+            else:
+                data[city] = [est_asset_dolla,1]
 
-        city = xml_data["data"]["asset"][d]["city"]
-        est_asset_dolla = int(xml_data["data"]["asset"][d]["est_asset_dollar"])
-        if city in data:
-            data[city][0] = data[city][0]+est_asset_dolla
-            data[city][1] = data[city][1] + 1
-        else:
-            data[city] = [est_asset_dolla,1]
+        for i,k in data.items():
+            data[i] = k[0]/k[1]
 
-    for i,k in data.items():
-        data[i] = k[0]/k[1]
-
-    top3 = sorted(data.items(), key=lambda x: x[1])[:3]
+        top3 = sorted(data.items(), key=lambda x: x[1])[:3]
     return [i[0] for i in top3]
 
 

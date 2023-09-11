@@ -13,28 +13,32 @@ from typing import Tuple
 # 리턴 값의 예) ("Donald", 1023014)
 import csv
 def find_richest_and_asset() -> Tuple:
+    # 혹시 for을 한번만 사용할 수 있는 방법이 있는지 궁금합니다.
     header = None
-    data = {}
     with open("hw_data/assets.csv", "r", encoding='utf-8') as f:
         csv_data = csv.reader(f, delimiter=',')
         got_header = False
-        num=0
+        name=[]
+        dollar=[]
         for row in csv_data:
             if not got_header:
                 header = row
                 got_header = True
                 continue
-            name = row[0]
-            dollar = int(row[4])
+            name.append(row[2])
+            dollar.append(dollar)
 
-            if name in data:
-                num+=1
-                data[name+' '+str(num)] = dollar
-            else :
-                data[name] = dollar
+        max_name = name[0]
+        max_dollar = dollar[0]
+        for doll in range(len(dollar)):
+            if max_dollar < dollar[doll]:
+                max_name = name[doll]
+                max_dollar = dollar[doll]
 
-        max_name = sorted(data.items(), key=lambda x: x[1],reverse=True)[0]
-    return max_name
+        return max_name, max_dollar
+
+
+
 
 
 
