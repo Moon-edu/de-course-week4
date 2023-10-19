@@ -9,14 +9,64 @@ from typing import Tuple
 # 아래 함수를 실행하면, assets.csv파일에서 자산 평가액(est_asset_dollar)값이 가장 큰 사람의 이름과 자산 평가액의 값이 리턴되어야 합니다.
 # 아래 함수를 실행하면 Tuple 값이 리턴되며, 자산 평가액이 가장 많은 사람의 이름과 자산 평가액이 리턴되어야 합니다.
 # 리턴 값의 예) ("Donald", 1023014)
+import csv
 def find_richest_and_asset() -> Tuple:
-    pass
+    header = None
+    data = []
+
+    with open("/Users/besthersoy/yagomDE_2023/과제제출(github repository: script)/de-course-week4/hw_data/assets.csv", "r") as f:
+        csv_data = csv.reader(f, delimiter= ',' )  #hw_csv.py => csv.py 원상복구
+
+        got_header = False
+        for row in csv_data:
+            if not got_header:
+                header = row
+                got_header = True
+                continue
+            data.append(row)
+
+    max_asset = data[data[4] == max(data[4])]
+    return( (max_asset[0], max_asset[4]) )
 
 
 # 아래 함수를 실행하면, assets.csv파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,
 # 상위 3개 도시를 리턴해야 합니다.(상위 3개의 순서는 무관합니다.)(20점)
 # 아래 함수를 실행하면 list 값이 리턴되며, 평균 자산 평가액이 많은 상위 3개 도시를 리턴합니다.
 # 리턴 값의 예) ["Dublin", "Seoul", "New York"]
+import csv
 def find_top3_richest_city() -> list:
-    pass
+    header = None
+    data = []
+    city_list = {}
+    city_final = []
+    with open("/Users/besthersoy/yagomDE_2023/과제제출(github repository: script)/de-course-week4/hw_data/assets.csv", "r") as f:
+        csv_data = csv.reader(f, delimiter= ',')
+
+        got_header = False
+        for row in csv_data:
+            if  got_header is False:
+                got_header = True
+                continue
+            data.append(row)
+
+        for d in data:
+            city  = d[2]
+            asset = int(d[4])
+
+            if city in city_list:
+                asset_sum, city_cnt, avg = city_list[city]
+                city_list[city] = ((asset_sum + asset)
+                                 , city_cnt  + 1
+                                 , (asset_sum + asset) / (city_cnt +1))
+            else:
+                city_list[city] = (asset,  1 , (asset / 1)) #asset_sum, city_cnt, avg
+
+
+    city_list = sorted(city_list.items(), key=lambda x: x[1][2], reverse = True)
+    city_rank3 = city_list[0:3]
+
+    for i in range(len(city_rank3)):
+        city_final.append(city_rank3[i][0])
+
+    return(city_final)
 
