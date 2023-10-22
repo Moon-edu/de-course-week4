@@ -10,7 +10,7 @@ from typing import Tuple
 # 리턴 값의 예) 10239102305
 from openpyxl import load_workbook
 def find_corp_total_asset() -> int:
-    wb = load_workbook(filename = "/Users/besthersoy/yagomDE_2023/과제제출(github repository: script)/de-course-week4/hw_data/assets.xlsx")
+    wb = load_workbook(filename = "dataset/assets.xlsx")
     first_sheet = wb.active
     got_header  = False
     header = None
@@ -41,7 +41,7 @@ def find_corp_total_asset() -> int:
 # 리턴 값의 예) 1025831.87653
 from openpyxl import load_workbook
 def find_llc_total_asset() -> int:
-    wb = load_workbook(filename = "/Users/besthersoy/yagomDE_2023/과제제출(github repository: script)/de-course-week4/hw_data/assets.xlsx")
+    wb = load_workbook(filename = "dataset/assets.xlsx")
     first_sheet = wb.active
     got_header  = False
     header = None

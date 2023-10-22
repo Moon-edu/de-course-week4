@@ -11,7 +11,7 @@ from typing import Tuple
 # 리턴 값의 예) ("Donald", -102314)
 import xmltodict
 def find_poor_and_asset() -> Tuple:
-    with open("/Users/besthersoy/yagomDE_2023/과제제출(github repository: script)/de-course-week4/hw_data/assets.xml", "r") as f:
+    with open("dataset/assets.xml", "r") as f:
         xml_data = xmltodict.parse(f.read())
 
     data = [0]
@@ -29,7 +29,7 @@ def find_poor_and_asset() -> Tuple:
 # 리턴 값의 예) ["Dublin", "Seoul", "New York"]
 import xmltodict
 def find_top3_poorest_city() -> list:
-    with open("/Users/besthersoy/yagomDE_2023/과제제출(github repository: script)/de-course-week4/hw_data/assets.xml", "r") as f:
+    with open("dataset/assets.xml", "r") as f:
         xml_data2 = xmltodict.parse(f.read())
 
     asset = []
