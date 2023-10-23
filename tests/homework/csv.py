@@ -14,7 +14,7 @@ def find_richest_and_asset() -> Tuple:
     header = None
     data = []
 
-    with open("dataset/assets.csv", "r") as f:
+    with open("hw_data/assets.csv", "r") as f:
         csv_data = csv.reader(f, delimiter= ',' )  #hw_csv.py => csv.py 원상복구
 
         got_header = False
@@ -39,7 +39,7 @@ def find_top3_richest_city() -> list:
     data = []
     city_list = {}
     city_final = []
-    with open("dataset/assets.csv", "r") as f:
+    with open("hw_data/assets.csv", "r") as f:
         csv_data = csv.reader(f, delimiter= ',')
 
         got_header = False

@@ -11,7 +11,7 @@ from typing import Tuple
 import json
 def summarize() -> Tuple:
     asset = []
-    with open("dataset/assets.json", "r") as f:
+    with open("hw_data/assets.json", "r") as f:
         json_data = json.load(f)
 
     for d in json_data:
