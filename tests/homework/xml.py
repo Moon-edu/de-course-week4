@@ -34,7 +34,7 @@ def find_top3_poorest_city() -> list:
     data = []
     city_list = {}
     city_final = []
-    with open("/Users/besthersoy/yagomDE_2023/과제제출(github repository: script)/de-course-week4/hw_data/assets.xml", "r") as f:
+    with open("hw_data/assets.xml", "r") as f:
         xml_data2 = xmltodict.parse(f.read())
 
     for x in xml_data2["data"]["asset"]:
