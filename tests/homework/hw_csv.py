@@ -16,7 +16,7 @@ def find_richest_and_asset() -> Tuple:
 
     with open("hw_data/assets.csv", "r") as f:
 
-        csv_data = csv.reader(f, delimiter= ',' )  #csv.py => csv.py 원상복구
+        csv_data = csv.reader(f, delimiter= ',' )  #hw_csv.py => hw_csv.py 원상복구
 
         got_header = False
         for row in csv_data:
@@ -27,7 +27,7 @@ def find_richest_and_asset() -> Tuple:
             data.append(row)
 
     data = sorted(data, key=lambda x: x[4], reverse=True)
-    max_asset = data[0][0], data[0][4]
+    max_asset = data[0][0], int(data[0][4])
 
     return max_asset
 
