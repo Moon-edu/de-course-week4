@@ -23,3 +23,6 @@ def summarize() -> Tuple:
     result = (asset_sum, asset_avg, asset_rcnt)
 
     return result
+
+
+

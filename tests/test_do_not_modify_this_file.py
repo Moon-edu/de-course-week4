@@ -1,4 +1,4 @@
-from tests.homework.hw_csv import *
+from tests.homework.csv import *
 from tests.homework.excel import *
 from tests.homework.json import *
 from tests.homework.xml import *

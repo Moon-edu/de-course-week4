@@ -65,4 +65,4 @@ def find_llc_total_asset() -> int:
             list.append(d["est_asset_dollar"])
 
     list_avg = sum(list) / len(list)
-    return list_avg
+    print( list_avg )
