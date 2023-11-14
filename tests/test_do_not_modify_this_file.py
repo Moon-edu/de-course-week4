@@ -1,7 +1,7 @@
-from tests.homework.csv import *
-from tests.homework.excel import *
-from tests.homework.json import *
-from tests.homework.xml import *
+from tests.homework.csv_hw import *
+from tests.homework.excel_hw import *
+from tests.homework.json_hw import *
+from tests.homework.xml_hw import *
 
 """
 이 파일은 채점을 위한 파일입니다. 수정하지 마세요.
