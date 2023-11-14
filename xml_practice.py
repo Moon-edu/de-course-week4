@@ -1,7 +1,7 @@
 import xmltodict
 
 def run():
-    with open("dataset/sample.xml", "r") as f:
+    with open("dataset/sample.xml", "r", encoding="utf-8") as f:
         xml_data = xmltodict.parse(f.read())
         # print(xml_data)
     data = []

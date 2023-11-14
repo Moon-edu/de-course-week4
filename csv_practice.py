@@ -4,7 +4,7 @@ import csv
 def run():
     header = None
     data = []
-    with open("dataset/sample.csv", "r") as f:
+    with open("dataset/sample.csv", "r", encoding="utf-8") as f:
         csv_data = csv.reader(f, delimiter=',')
         got_header = False
         for row in csv_data:

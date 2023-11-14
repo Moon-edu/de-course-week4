@@ -3,7 +3,7 @@ from datetime import datetime
 
 def run():
 
-    with open("dataset/sample.json", "r") as f:
+    with open("dataset/sample.json", "r", encoding="utf-8") as f:
         json_data = json.load(f)
 
     print(f"Sample data is {json_data[0]}")
