@@ -5,7 +5,7 @@ def find_richest_and_asset() -> Tuple:
     list_csv_data = []
     header_col = None
 
-    with open('../../hw_data/assets.csv', encoding='utf-8') as f:
+    with open('hw_data/assets.csv', encoding='utf-8') as f:
         csv_reader = csv.reader(f)
         header_col = dict((value, idx) for idx, value in enumerate(next(csv_reader)))
 
@@ -20,7 +20,7 @@ def find_top3_richest_city() -> list:
     list_csv_data = []
     header_col = None
 
-    with open('../../hw_data/assets.csv', encoding='utf-8') as f:
+    with open('hw_data/assets.csv', encoding='utf-8') as f:
         csv_reader = csv.reader(f)
         header_col = dict((value, idx) for idx, value in enumerate(next(csv_reader)))
 

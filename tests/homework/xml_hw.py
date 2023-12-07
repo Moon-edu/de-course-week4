@@ -2,7 +2,7 @@ from typing import Tuple
 import xmltodict
 
 def find_poor_and_asset() -> Tuple:
-    with open('../../hw_data/assets.xml', encoding='utf-8') as f:
+    with open('hw_data/assets.xml', encoding='utf-8') as f:
         list_xml_data = xmltodict.parse(f.read())['data']['asset']
 
     min_est_asset_dollar_data = min(list_xml_data, key=lambda xml_data:xml_data['est_asset_dollar'])
@@ -10,7 +10,7 @@ def find_poor_and_asset() -> Tuple:
     return (min_est_asset_dollar_data['name'], min_est_asset_dollar_data['est_asset_dollar'])
 
 def find_top3_poorest_city() -> list:
-    with open('../../hw_data/assets.xml', encoding='utf-8') as f:
+    with open('hw_data/assets.xml', encoding='utf-8') as f:
         list_xml_data = xmltodict.parse(f.read())['data']['asset']
 
     dict_city = {}

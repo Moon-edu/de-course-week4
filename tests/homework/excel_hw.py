@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 def find_corp_total_asset() -> int:
     nsum_est_asset_dollar = 0
 
-    workbook = load_workbook('../../hw_data/assets.xlsx')
+    workbook = load_workbook('hw_data/assets.xlsx')
     worksheet = workbook.worksheets[0]
 
     dict_column = {}
@@ -20,7 +20,7 @@ def find_llc_total_asset() -> int:
     nsum_est_asset_dollar = 0
     ncount = 0
 
-    workbook = load_workbook('../../hw_data/assets.xlsx')
+    workbook = load_workbook('hw_data/assets.xlsx')
     worksheet = workbook.worksheets[0]
 
     dict_column = {}
