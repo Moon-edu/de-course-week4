@@ -10,7 +10,7 @@ import openpyxl
 # 아래 함수를 실행하면, assets.xlsx 에서 Corp.로 끝나는 회사를 다니는 사람들의 자산 총 합계를 리턴합니다.
 # 리턴 값의 예) 10239102305
 def find_corp_total_asset() -> int:
-    wb = openpyxl.load_workbook("/Users/eunalong/Documents/GitHub/start_de/de-course-week4/hw_data/assets.xlsx")
+    wb = openpyxl.load_workbook("hw_data/assets.xlsx")
     ws = wb.active
 
     flags = False
@@ -42,7 +42,7 @@ def find_corp_total_asset() -> int:
 # 아래 함수를 실행하면, assets.xlsx 에서 LLC로 끝나는 회사를 다니는 사람들의 자산 총 평균을 리턴합니다.
 # 리턴 값의 예) 1025831.87653
 def find_llc_total_asset() -> int:
-    wb = openpyxl.load_workbook("/Users/eunalong/Documents/GitHub/start_de/de-course-week4/hw_data/assets.xlsx")
+    wb = openpyxl.load_workbook("hw_data/assets.xlsx")
     ws = wb.active
 
     wb_flag = False

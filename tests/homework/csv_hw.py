@@ -11,7 +11,7 @@ import csv
 # 아래 함수를 실행하면 Tuple 값이 리턴되며, 자산 평가액이 가장 많은 사람의 이름과 자산 평가액이 리턴되어야 합니다.
 # 리턴 값의 예) ("Donald", 1023014)
 def find_richest_and_asset() -> Tuple:
-    with open("/Users/eunalong/Documents/GitHub/start_de/de-course-week4/hw_data/assets.csv","r") as csv_file :
+    with open("hw_data/assets.csv","r") as csv_file :
         assets_raw = csv.reader(csv_file, delimiter=",")
         data = []
         assets = []
@@ -38,7 +38,7 @@ def find_richest_and_asset() -> Tuple:
 # 아래 함수를 실행하면 list 값이 리턴되며, 평균 자산 평가액이 많은 상위 3개 도시를 리턴합니다.
 # 리턴 값의 예) ["Dublin", "Seoul", "New York"]
 def find_top3_richest_city() -> list:
-    with open("/Users/eunalong/Documents/GitHub/start_de/de-course-week4/hw_data/assets.csv","r") as csv_file :
+    with open("hw_data/assets.csv","r") as csv_file :
         assets_raw = csv.reader(csv_file, delimiter=",")
         data = []
         cities = []

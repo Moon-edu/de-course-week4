@@ -11,7 +11,7 @@ import xmltodict
 # 아래 함수를 실행하면 Tuple 값이 리턴되며, 자산 평가액이 가장 적은 사람의 이름과 자산 평가액이 리턴되어야 합니다.
 # 리턴 값의 예) ("Donald", -102314)
 def find_poor_and_asset() -> Tuple:
-    with open("/Users/eunalong/Documents/GitHub/start_de/de-course-week4/hw_data/assets.xml", "r") as xml_file :
+    with open("hw_data/assets.xml", "r") as xml_file :
         data = xmltodict.parse(xml_file.read())['data']['asset']
 
         # 가장 작은 자산 평가액 도출
@@ -31,7 +31,7 @@ def find_poor_and_asset() -> Tuple:
 # 아래 함수를 실행하면 list 값이 리턴되며, 평균 자산 평가액이 적은 하위 3개 도시를 리턴합니다.
 # 리턴 값의 예) ["Dublin", "Seoul", "New York"]
 def find_top3_poorest_city() -> list:
-    with open("/Users/eunalong/Documents/GitHub/start_de/de-course-week4/hw_data/assets.xml", "r") as xml_file :
+    with open("hw_data/assets.xml", "r") as xml_file :
         data = xmltodict.parse(xml_file.read())['data']['asset']
 
     # 도시 자산 평가액 평균

@@ -11,7 +11,7 @@ import json
 # 리턴 값의 예) (100391284324, 198312.8732, 500)
 def summarize() -> Tuple:
     # data 읽어오기
-    with open("/Users/eunalong/Documents/GitHub/start_de/de-course-week4/hw_data/assets.json", "r") as json_file :
+    with open("hw_data/assets.json", "r") as json_file :
         data = json.load(json_file)
 
     data_sum = 0
