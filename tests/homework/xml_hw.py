@@ -40,11 +40,11 @@ def find_top3_poorest_city() -> list:
                 city_assets[city] = []
             city_assets[city].append(asset)
 
-            avg_assets = {city:sum(asset)/len(asset) for (city, asset) in city_assets.items()}
+        avg_assets = {city:sum(asset)/len(asset) for (city, asset) in city_assets.items()}
 
-            # 정렬 후 bottom3 도출
-            sorted_lists = sorted(avg_assets.items(), key=lambda x: x[1], reverse=False)
-            bottom3 = [city[0] for city in sorted_lists][:3]
+        # 정렬 후 bottom3 도출
+        sorted_lists = sorted(avg_assets.items(), key=lambda x: x[1], reverse=False)
+        bottom3 = [city[0] for city in sorted_lists][:3]
 
     return bottom3
 
