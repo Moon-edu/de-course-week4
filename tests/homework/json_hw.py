@@ -11,22 +11,15 @@ import json
 # 리턴 값의 예) (100391284324, 198312.8732, 500)
 def summarize() -> Tuple:
     # data 읽어오기
-    with open("hw_data/assets.json", "r") as json_file :
+    with open("hw_data/assets.json", "r") as json_file:
         data = json.load(json_file)
+        
+        # 자산 집계액 구하기
+        sum_asset = sum(int(row['est_asset_dollar']) for row in data)
+        avg_asset = sum_asset / len(data)
+        cnt_asset = len(data)
+        
+    return (sum_asset, avg_asset, cnt_asset)
 
-    data_sum = 0
-    data_avg = None
-    data_cnt = 0
-
-    # data_sum과 data_cnt 구하기
-    for row in data :
-        data_sum = data_sum + int(row['est_asset_dollar'])
-        data_cnt = data_cnt + 1
-
-    # data_sum, data_cnt를 이용해 data_avg 구하기
-    data_avg = data_sum / data_cnt
-
-    # 집계값을 한 tuple로 담기
-    asset_agg = (data_sum, data_avg, data_cnt)
-
-    return(print(asset_agg))
+result = summarize()
+print(result)
