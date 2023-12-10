@@ -39,7 +39,7 @@ def find_top3_richest_city() -> list:
         #평균 자산액 계산
         city_assets = {}
         for row in csv_data:
-            city, asset = row[0], int(row[4])
+            city, asset = row[2], int(row[4])
 
             if city not in city_assets:
                 city_assets[city] = []
