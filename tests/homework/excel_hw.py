@@ -27,7 +27,7 @@ def find_corp_total_asset() -> int:
         })
 
     # corp.로 끝나는 회사명 가지고 오기 -> 스페이스로 회사명을 split하고 마지막 단위가 Corp이면 가져오기
-    corp_company = [row['est_asset_dollar'] for row in data if row['company'].split()[-1] == 'Corp.']
+    corp_company = [row['est_asset_dollar'] for row in data if row['company'].endswith('Corp.')]
     sum_asset = sum(corp_company)
 
     return sum_asset
@@ -43,22 +43,19 @@ def find_llc_total_asset() -> int:
     wb_flag = False
     data = []
 
+    # LLC로 끝나는 회사의 asset value만 가져오도록 설정 
     for row in ws:
         if not wb_flag:
-            wb_flag = True
-            continue
-        data.append({
-            'company': row[1].value,
-            'est_asset_dollar': int(row[4].value)
-        })
-
-    # 평균 구하기
-    llc_company = [row['est_asset_dollar'] for row in data if row['company'].split()[-1] == 'LLC']
-
-    # 회사명이 LLC로 끝나는 회사가 있는지에 따라 다른 값 리턴
-    if len(llc_company) > 0:
-        avg_asset = sum(llc_company) / len(llc_company)
-        return avg_asset
+            flags = True
+        elif row[1].value.endswith('LLC'):
+            data.append(int(row[4].value))
+    
+    # 평균 도출
+    avgs = sum(data)/len(data)
+    
+    # 리턴
+    if len(data) > 0:
+        return avgs
     else:
         return 0
 

@@ -14,12 +14,9 @@ def summarize() -> Tuple:
     with open("hw_data/assets.json", "r") as json_file:
         data = json.load(json_file)
         
-        # 자산 집계액 구하기
-        sum_asset = sum(int(row['est_asset_dollar']) for row in data)
-        avg_asset = sum_asset / len(data)
-        cnt_asset = len(data)
+    # 자산 집계액 구하기
+    sum_asset = sum(int(row['est_asset_dollar']) for row in data)
+    avg_asset = sum_asset / len(data)
+    cnt_asset = len(data)
         
     return (sum_asset, avg_asset, cnt_asset)
-
-result = summarize()
-print(result)

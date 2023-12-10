@@ -19,8 +19,8 @@ def find_richest_and_asset() -> Tuple:
         # data의 5번째 컬럼을 str->int로 변경
         data = [(i[0], int(i[4])) for i in csv_data]
 
-        # data에서 asset값이 최대인 경우만 출력
-        max_asset = max(data, key=lambda x: x[1]) # 최대값을 표현할 수 있음
+    # data에서 asset값이 최대인 경우만 출력
+    max_asset = max(data, key=lambda x: x[1]) # 최대값을 표현할 수 있음
 
     # max_asset 리턴
     return max_asset
@@ -45,10 +45,10 @@ def find_top3_richest_city() -> list:
                 city_assets[city] = []
             city_assets[city].append(asset)
 
-        avg_assets = {city:sum(asset)/len(asset) for (city, asset) in city_assets.items()}
+    avg_assets = {city:sum(asset)/len(asset) for (city, asset) in city_assets.items()}
 
-        # 정렬 후 top3 도출
-        sorted_lists = sorted(avg_assets.items(), key=lambda x:x[1], reverse=True)
-        top3 = [city[0] for city in sorted_lists[:3]]
+    # 정렬 후 top3 도출
+    sorted_lists = sorted(avg_assets.items(), key=lambda x:x[1], reverse=True)
+    top3 = [city[0] for city in sorted_lists[:3]]
 
     return top3
