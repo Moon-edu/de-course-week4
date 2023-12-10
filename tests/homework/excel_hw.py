@@ -50,12 +50,10 @@ def find_llc_total_asset() -> int:
         elif row[1].value.endswith('LLC'):
             data.append(int(row[4].value))
     
-    # 평균 도출
-    avgs = sum(data)/len(data)
     
-    # 리턴
+    # 평균값 리턴
     if len(data) > 0:
-        return avgs
+        return sum(data)/len(data)
     else:
         return 0
 
