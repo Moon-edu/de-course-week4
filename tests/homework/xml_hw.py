@@ -17,7 +17,7 @@ def find_poor_and_asset() -> Tuple:
     
     # 최소값 출력
     min_asset = min(data, key=lambda x: int(x['est_asset_dollar']))
-    return (min_asset['name'], min_asset['est_asset_dollar'])
+    return (min_asset['name'], int(min_asset['est_asset_dollar']))
 
 
 # 아래 함수를 실행하면, assets.xml파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,
