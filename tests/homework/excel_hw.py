@@ -39,21 +39,19 @@ def find_corp_total_asset() -> int:
 def find_llc_total_asset() -> int:
     wb = openpyxl.load_workbook("hw_data/assets.xlsx")
     ws = wb.active
-
-    wb_flag = False
-    data = []
-
-    # LLC로 끝나는 회사의 asset value만 가져오도록 설정 
+    sum = 0
+    cnt = 0
+    flags = False
+    
     for row in ws:
-        if not wb_flag:
+        if not flags:
             flags = True
         elif row[1].value.endswith('LLC'):
-            data.append(int(row[4].value))
-    
-    
-    # 평균값 리턴
-    if len(data) > 0:
-        return sum(data)/len(data)
+            sum += int(row[4].value)
+            cnt += 1
+
+    if cnt > 0:
+        return sum/cnt
     else:
         return 0
 
