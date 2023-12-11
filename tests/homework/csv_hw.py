@@ -15,15 +15,10 @@ def find_richest_and_asset() -> Tuple:
         csv_data = csv.reader(csv_file, delimiter=",")
         # header 날림
         next(csv_data)
-
-        # data의 5번째 컬럼을 str->int로 변경
-        data = [(i[0], int(i[4])) for i in csv_data]
-
     # data에서 asset값이 최대인 경우만 출력
-    max_asset = max(data, key=lambda x: x[1]) # 최대값을 표현할 수 있음
-
+        max_asset = max(csv_data, key=lambda x: int(x[4]))  
     # max_asset 리턴
-    return max_asset
+    return (max_asset[0], int(max_asset[4]))
 
 
 # 아래 함수를 실행하면, assets.csv파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,
@@ -42,13 +37,15 @@ def find_top3_richest_city() -> list:
             city, asset = row[2], int(row[4])
 
             if city not in city_assets:
-                city_assets[city] = []
-            city_assets[city].append(asset)
+                city_assets[city] = [asset, 1]
+            else:
+                city_assets[city][0] += asset
+                city_assets[city][1] += 1
 
-    avg_assets = {city:sum(asset)/len(asset) for (city, asset) in city_assets.items()}
+    avg_assets = {city:asset[0]/asset[1] for (city, asset) in city_assets.items()}
 
     # 정렬 후 top3 도출
-    sorted_lists = sorted(avg_assets.items(), key=lambda x:x[1], reverse=True)
-    top3 = [city[0] for city in sorted_lists[:3]]
+    sorted_lists = sorted(avg_assets.items(), key=lambda x:x[1], reverse=True)[:3]
+    top3 = [(city[0]) for city in sorted_lists]
 
     return top3

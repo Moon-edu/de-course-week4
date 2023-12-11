@@ -14,13 +14,10 @@ def find_poor_and_asset() -> Tuple:
     with open("hw_data/assets.xml", "r") as xml_file:
         data = xmltodict.parse(xml_file.read())['data']['asset']
 
-        # 자산평가액 str->int로 변경해 출력
-        data = [(row['name'], int(row['est_asset_dollar'])) for row in data]
-
-        # 최소값 구하기
-        min_asset = min(data, key=lambda x: x[1])
-
-    return min_asset
+    
+    # 최소값 출력
+    min_asset = min(data, key=lambda x: int(x['est_asset_dollar']))
+    return (min_asset['name'], min_asset['est_asset_dollar'])
 
 
 # 아래 함수를 실행하면, assets.xml파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,
@@ -31,20 +28,23 @@ def find_top3_poorest_city() -> list:
     with open("hw_data/assets.xml", "r") as xml_file:
         data = xmltodict.parse(xml_file.read())['data']['asset']
 
-        # 도시 별 평균 자산액 계산
-        city_assets = {}
-        for row in data:
-            city, asset = row['city'], int(row['est_asset_dollar'])
+    # 도시 별 평균 자산액 계산
+    city_assets = {}
+    for row in data:
+        city, asset = row['city'], int(row['est_asset_dollar'])
+        
+        #sum, len 함수를 안 쓰게 변경
+        if city not in city_assets:
+            city_assets[city] = [asset, 1]
+        else:
+            city_assets[city][0] += asset 
+            city_assets[city][1] += 1
 
-            if city not in city_assets:
-                city_assets[city] = []
-            city_assets[city].append(asset)
+    avg_assets = {city:asset[0]/asset[1] for (city, asset) in city_assets.items()}
 
-        avg_assets = {city:sum(asset)/len(asset) for (city, asset) in city_assets.items()}
-
-        # 정렬 후 bottom3 도출
-        sorted_lists = sorted(avg_assets.items(), key=lambda x: x[1], reverse=False)
-        bottom3 = [city[0] for city in sorted_lists[:3]]
+    # 정렬 후 bottom3 도출
+    sorted_lists = sorted(avg_assets.items(), key=lambda x: x[1], reverse=False)[:3]
+    bottom3 = [city[0] for city in sorted_lists]
 
     return bottom3
 

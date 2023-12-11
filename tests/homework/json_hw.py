@@ -18,5 +18,5 @@ def summarize() -> Tuple:
     sum_asset = sum(int(row['est_asset_dollar']) for row in data)
     avg_asset = sum_asset / len(data)
     cnt_asset = len(data)
-        
+    
     return (sum_asset, avg_asset, cnt_asset)

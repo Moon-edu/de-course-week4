@@ -14,23 +14,16 @@ def find_corp_total_asset() -> int:
     ws = wb.active
 
     flags = False
-    data = []
+    sum_assets = 0
 
     # 로우만 가지고 오기
-    for row in ws :
-        if not flags :
+    for row in ws:
+        if not flags:
             flags = True
-            continue
-        data.append({
-            'company': row[1].value,
-            'est_asset_dollar': int(row[4].value)
-        })
+        elif row[1].value.endswith('Corp.'):
+            sum_essets += int(row[4].value)
 
-    # corp.로 끝나는 회사명 가지고 오기 -> 스페이스로 회사명을 split하고 마지막 단위가 Corp이면 가져오기
-    corp_company = [row['est_asset_dollar'] for row in data if row['company'].endswith('Corp.')]
-    sum_asset = sum(corp_company)
-
-    return sum_asset
+    return sum_assets
 
 
 # 아래에서 pass를 지우고 로직을 작성하세요(10점)
