@@ -10,13 +10,18 @@ import json
 # 아래 함수를 실행하면, assets.json 파일에 있는 모든 레코드의 자산 평가액(est_asset_dollar)의 합계, 평균, 총 레코드 수를 리턴해야 합니다.
 # 리턴 값의 예) (100391284324, 198312.8732, 500)
 def summarize() -> Tuple:
+    # 변수 지정
+    asset_sum = 0
+    asset_cnt = 0
+
     # data 읽어오기
     with open("hw_data/assets.json", "r") as json_file:
-        data = json.load(json_file)
-        
-    # 자산 집계액 구하기
-    sum_asset = sum(int(row['est_asset_dollar']) for row in data)
-    avg_asset = sum_asset / len(data)
-    cnt_asset = len(data)
+        # 불러올 때 조건 지정하기
+        for row in json.load(json_file):
+            asset_sum += int(row['est_asset_dollar'])
+            asset_cnt += 1
     
-    return (sum_asset, avg_asset, cnt_asset)
+    # 평균 구하기 (카운트가 0인 경우 고려)
+    asset_avg = asset_sum / asset_cnt if asset_cnt > 0 else 0
+
+    return asset_sum, asset_avg, asset_cnt        

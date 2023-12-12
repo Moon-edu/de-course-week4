@@ -15,9 +15,19 @@ def find_poor_and_asset() -> Tuple:
         data = xmltodict.parse(xml_file.read())['data']['asset']
 
     
-    # 최소값 출력
-    min_asset = min(data, key=lambda x: int(x['est_asset_dollar']))
-    return (min_asset['name'], int(min_asset['est_asset_dollar']))
+    # 최소값 출력 (min 함수 안쓰고)
+    min_asset = int(data[0]['est_asset_dollar'])
+    min_name = data[0]['name']
+
+    for row in data:
+        asset = int(row['est_asset_dollar'])
+        names = row['name']
+
+        if asset < min_asset:
+            min_asset = asset
+            min_name = names
+
+    return min_name, min_asset
 
 
 # 아래 함수를 실행하면, assets.xml파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,

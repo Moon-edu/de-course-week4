@@ -15,10 +15,17 @@ def find_richest_and_asset() -> Tuple:
         csv_data = csv.reader(csv_file, delimiter=",")
         # header 날림
         next(csv_data)
-    # data에서 asset값이 최대인 경우만 출력
-        max_asset = max(csv_data, key=lambda x: int(x[4]))  
-    # max_asset 리턴
-    return (max_asset[0], int(max_asset[4]))
+        
+        max_asset = None
+        max_name = None
+        
+        # max값 찾기 (max함수 대신 반복문을 사용해봄)
+        for row in csv_data:
+            if max_asset == None or max_asset < int(row[4]):
+                max_asset = int(row[4])
+                max_name = row[0]
+
+    return max_name, max_asset
 
 
 # 아래 함수를 실행하면, assets.csv파일에서 도시별(city) 자산 평가액(est_asset_dollar)의 평균을 내고,
