@@ -1,4 +1,4 @@
-0from typing import Tuple
+from typing import Tuple
 # 주의사항 1. 각 파일 간의 함수, 혹은 로직을 공유하지 마세요
 # 주의사항 2. 함수 이름은 변경하지 마세요
 # 주의사항 3. 함수명이 test_로 시작하는 함수를 만들지 마세요
